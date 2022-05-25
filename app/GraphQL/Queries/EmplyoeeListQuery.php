@@ -60,6 +60,6 @@ class EmplyoeeListQuery extends Query
         $limit = !empty($args['limit']) ? $args['limit'] : 10;
         $page = !empty($args['page']) ? $args['page'] : 1;
 
-        return Emplyoee::query()->with($with)->select($select)->paginate($limit, ['*'], 'page', $page);
+        return Emplyoee::query()->with($with)->select($select)->latest()->paginate($limit, ['*'], 'page', $page);
     }
 }

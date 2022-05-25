@@ -6,7 +6,10 @@ use App\GraphQL\Mutations\CreateEmplyoeeMutation;
 use App\GraphQL\Mutations\CreateUserMutation;
 use App\GraphQL\Mutations\DeleteEmplyoeeMutation;
 use App\GraphQL\Mutations\UpdateEmplyoeeMutation;
+use App\GraphQL\Mutations\UserLogoutMutation;
 use App\GraphQL\Queries\EmplyoeeListQuery;
+use App\GraphQL\Queries\EmplyoeeQuery;
+use App\GraphQL\Queries\UserQuery;
 use App\GraphQL\Types\EmplyoeeType;
 use App\GraphQL\Types\UserType;
 
@@ -83,11 +86,14 @@ return [
         'default' => [
             'query' => [
                 EmplyoeeListQuery::class,
+                EmplyoeeQuery::class,
+                UserQuery::class,
             ],
             'mutation' => [
                 CreateEmplyoeeMutation::class,
                 UpdateEmplyoeeMutation::class,
                 DeleteEmplyoeeMutation::class,
+                UserLogoutMutation::class,
             ],
             // The types only available in this schema
             'types' => [

@@ -7,6 +7,7 @@ use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Mutation;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 class CreateUserMutation extends Mutation
 {
@@ -43,11 +44,12 @@ class CreateUserMutation extends Mutation
             'password' => [
                 'name' => 'password',
                 'type' =>  Type::nonNull(Type::string()),
-                'rules' => [
-                    'required',
-                    'min:5',
-                ],
+                'rules' => ['required', 'confirmed', Rules\Password::defaults()]
             ],
+            'password_confirmation' => [
+                'name' => 'password_confirmation',
+                'type' =>  Type::nonNull(Type::string()),
+            ]
         ];
     }
 
