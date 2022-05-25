@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('job_positon');
             $table->string('gender');
-            $table->float('salary');
+            $table->float('salary',10,2);
             $table->date('hire_date');
             $table->date('birthday');
             $table->unsignedBigInteger('created_user')->nullable();

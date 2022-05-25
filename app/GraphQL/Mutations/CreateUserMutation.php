@@ -30,6 +30,7 @@ class CreateUserMutation extends Mutation
                 'rules' => [
                     'required',
                     'string',
+                    'max:255',
                 ],
             ],
             'email' => [
@@ -38,13 +39,14 @@ class CreateUserMutation extends Mutation
                 'rules' => [
                     'required',
                     'email',
-                    'unique:users,email'
+                    'unique:users,email',
+                    'max:255',
                 ],
             ],
             'password' => [
                 'name' => 'password',
                 'type' =>  Type::nonNull(Type::string()),
-                'rules' => ['required', 'confirmed', Rules\Password::defaults()]
+                'rules' => ['required', 'confirmed', 'max:255', Rules\Password::defaults()]
             ],
             'password_confirmation' => [
                 'name' => 'password_confirmation',

@@ -19,7 +19,7 @@ class UpdateEmplyoeeMutation extends Mutation
     {
         return [
             'name' => [
-                'required', 'max:50'
+                'required', 'max:255'
             ],
             'email' => [
                 'required', 'email',  isset($args['email']) ? Rule::unique('emplyoees')->ignore($args['id']) : 'unique:emplyoees,phone',
@@ -31,16 +31,16 @@ class UpdateEmplyoeeMutation extends Mutation
                 'required', 'string', 'max:255',
             ],
             'gender' => [
-                'required', 'string', 'max:255',
+                'required', 'string', 'in:male,female',
             ],
             'salary' => [
-                'required'
+                'required', 'numeric', 'digits_between:1,10', 'min:1'
             ],
             'hire_date' => [
-                'required'
+                'required', 'date'
             ],
             'birthday' => [
-                'required'
+                'required', 'date'
             ],
 
         ];

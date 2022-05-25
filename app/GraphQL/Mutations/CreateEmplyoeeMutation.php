@@ -18,7 +18,7 @@ class CreateEmplyoeeMutation extends Mutation
     {
         return [
             'name' => [
-                'required', 'max:50'
+                'required', 'max:255'
             ],
             'email' => [
                 'required', 'email', 'unique:emplyoees,email',
@@ -30,16 +30,16 @@ class CreateEmplyoeeMutation extends Mutation
                 'required', 'string', 'max:255',
             ],
             'gender' => [
-                'required', 'string', 'max:255',
+                'required', 'string', 'in:male,female',
             ],
             'salary' => [
-                'required'
+                'required', 'numeric', 'digits_between:1,10', 'min:1'
             ],
             'hire_date' => [
-                'required'
+                'required', 'date'
             ],
             'birthday' => [
-                'required'
+                'required', 'date'
             ],
 
         ];
